@@ -8,7 +8,7 @@ const { InjectManifest } = require('workbox-webpack-plugin');
 
 module.exports = () => {
   return {
-    mode: 'development',
+    mode: 'production',
     entry: {
       main: './src/js/index.js',
       install: './src/js/install.js'
@@ -23,8 +23,8 @@ module.exports = () => {
         title: "pwa editor",
       }),
       new InjectManifest({
-        swSrc: "./src/sw.js",
-        swDest: "src.sw.js",
+        swSrc: "./src-sw.js",
+        swDest: "src-sw.js",
       }),
       new WebpackPwaManifest({
         fingerprints: false,
@@ -40,7 +40,25 @@ module.exports = () => {
 
     module: {
       rules: [
-        
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
+      },
+      {
+          test: /\.m?js$/,
+          exclude: /node_modules/,
+          // We use babel-loader in order to use ES6.
+          use: {
+              loader: 'babel-loader',
+              options: {
+                  presets: ['@babel/preset-env'],
+                  plugins: [
+                      '@babel/plugin-proposal-object-rest-spread',
+                      '@babel/transform-runtime',
+                  ],
+              },
+          },
+      },  
       ],
     },
   };
