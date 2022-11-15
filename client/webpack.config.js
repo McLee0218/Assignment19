@@ -52,7 +52,7 @@ module.exports = () => {
               loader: 'babel-loader',
               options: {
                   presets: ['@babel/preset-env'],
-                  pluggins: [
+                  plugins: [
                       '@babel/plugin-proposal-object-rest-spread',
                       '@babel/transform-runtime',
                   ],
