@@ -21,7 +21,6 @@ export const putDb = async (content) => {
   const results = await retrieve;
   console.log("these are the", results);
   console.error('putDb not implemented');
-  console.log("trying to deploy");
 };
 
 // TODO: Add logic for a method that gets all the content from the database
