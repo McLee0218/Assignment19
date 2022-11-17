@@ -8,10 +8,8 @@
     "start": "npm run build && cd server && node server.js",
     "server": "cd server nodemon server.js --ignore client",
     "build": "cd client && npm run build",
-    "install": "",
-    "client": "cd client && npm start",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "install": "cd server && npm i && cd ../client && npm i",
+    "client": "cd client && npm start"
   },
   "keywords": [],
   "author": "",
